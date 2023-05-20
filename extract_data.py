@@ -10,8 +10,8 @@ for idx, file in enumerate(data):
     print(f"{idx/len(data)*100:.2f}, avg {sum/total}")
     with open(file,"r",encoding="utf8") as html:
         soup = BeautifulSoup(html.read(), 'html.parser')
-        #if re.search("money",file) == None:
-        #    continue
+        if re.search("money",file) == None:
+            continue
         # Iterate through the DOM
         for tag in soup.descendants:
             if tag.name == 'div':
@@ -23,4 +23,4 @@ for idx, file in enumerate(data):
                     extracted_data.append({"body":richtext_content.replace("\n"," "),"length":len(richtext_content.replace("\n"," "))})
                     sum += len(richtext_content.replace("\n"," "))
 df = pd.DataFrame(extracted_data)
-df.to_csv("extracted_data_all.csv")
+df.to_csv("extracted_data_tax.csv")
