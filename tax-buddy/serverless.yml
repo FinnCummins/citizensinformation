@@ -1,0 +1,27 @@
+service: tax-buddy
+
+frameworkVersion: '3'
+
+custom:
+  wsgi:
+    app: app.app
+  client:
+    bucketName: tax-buddy-client
+
+provider:
+  name: aws
+  runtime: python3.7
+  profile: taxbuddy-user
+  region: eu-west-1
+
+
+functions:
+  api:
+    handler: wsgi_handler.handler
+    events:
+      - httpApi: '*'
+
+plugins:
+  - serverless-wsgi
+  - serverless-python-requirements
+  - serverless-finch
