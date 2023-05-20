@@ -10,7 +10,9 @@ custom:
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.7
+  profile: taxbuddy-user
+  region: eu-west-1
 
 
 functions:
