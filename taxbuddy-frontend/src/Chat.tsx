@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import MessageContext from './MessageContext'
 import './Chat.css';
 
@@ -7,9 +7,13 @@ type Message = {
   content: string,
 };
 
-const Chat = () => {
+type ChatProps = {
+  isLoading: boolean,
+};
 
-  const messages = useContext(MessageContext)
+const Chat = (props: ChatProps) => {
+  const { isLoading } = props;
+  const messages = useContext(MessageContext);
 
   const renderMessage = (message: Message, index: number) => (
     <div className="message" key={index.toString()}>
@@ -28,6 +32,7 @@ const Chat = () => {
           renderMessage(message, index)
         ))
       }
+      {isLoading ? <p>Thinking...</p> : null}
     </>
   );
 }

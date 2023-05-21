@@ -13,6 +13,7 @@ type Message = {
 const App = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [conversation, setConversation] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onMessageSubmit = async (message: string) => {
     const newMessage = {
@@ -21,6 +22,7 @@ const App = () => {
     }
     const updateMessages = [...messages, newMessage];
     setMessages(updateMessages);
+    setIsLoading(true);
     const { answer, conversation: conversationResponse } = await getResponse(message, conversation);
     const newReponse = {
       role: 'agent',
@@ -28,12 +30,15 @@ const App = () => {
     }
     setMessages([...updateMessages, newReponse]);
     setConversation(conversationResponse);
+    setIsLoading(false);
   }
 
   return (
     <div className="App">
       <MessageProvider value={messages}>
-        <div className="chat"><Chat /></div>
+        <div className="chat">
+          <Chat isLoading={isLoading} />
+        </div>
       </MessageProvider>
       <div className="messageInput">
         <MessageInput
