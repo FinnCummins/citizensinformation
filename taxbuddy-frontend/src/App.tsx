@@ -12,25 +12,22 @@ type Message = {
 
 const App = () => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [conversation, setConversation] = useState<any>([]);
 
   const onMessageSubmit = async (message: string) => {
-    const currentTime = new Date();
-
-    console.log(messages);
     const newMessage = {
       role: 'user',
       content: message,
-      // timeStamp: `${currentTime.getHours()}:${currentTime.getMinutes()}`
     }
-
-    const { conversation, answer } = await getResponse(message);
-    
+    console.log('!!!!!!!!!', conversation);
+    const { answer, conversation: conversationResponse } = await getResponse(message, conversation);
     const newReponse = {
       role: 'agent',
       content: answer,
-      // timeStamp: `${currentTime.getHours()}:${currentTime.getMinutes()}`
     }
+
     setMessages([...messages, newMessage, newReponse]);
+    setConversation(conversationResponse);
   }
 
   return (
