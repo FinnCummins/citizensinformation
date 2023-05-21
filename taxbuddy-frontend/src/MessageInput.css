@@ -1,0 +1,25 @@
+.formContainer {
+    height: 70px;
+    border-top: 1px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .textInput {
+    padding: 10px;
+    border: 1px solid #444;
+    font-size: 18px;
+    border-radius: 5px;
+}
+  
+  .submitButton {
+    padding: 10px;
+    border: 1px solid #e65c00;
+    font-size: 18px; 
+    background-color: #e65c00;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    border-radius: 5px;
+  }
