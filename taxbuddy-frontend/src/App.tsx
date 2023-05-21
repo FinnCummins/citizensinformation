@@ -19,14 +19,14 @@ const App = () => {
       role: 'user',
       content: message,
     }
-    console.log('!!!!!!!!!', conversation);
+    const updateMessages = [...messages, newMessage];
+    setMessages(updateMessages);
     const { answer, conversation: conversationResponse } = await getResponse(message, conversation);
     const newReponse = {
       role: 'agent',
       content: answer,
     }
-
-    setMessages([...messages, newMessage, newReponse]);
+    setMessages([...updateMessages, newReponse]);
     setConversation(conversationResponse);
   }
 
