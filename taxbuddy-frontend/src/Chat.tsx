@@ -28,7 +28,7 @@ const Chat = (props: ChatProps) => {
   return (
     <>
       {
-        messages.reverse().map((message: Message, index: number) => (
+        messages.map((message: Message, index: number) => (
           renderMessage(message, index)
         ))
       }
