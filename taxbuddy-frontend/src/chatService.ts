@@ -5,7 +5,6 @@ const getResponse = async (message: string, messages: any) => {
         body: JSON.stringify({ question: message, conversation: messages }),
     });
     const jsonData = await response.json();
-    console.log(jsonData);
     return jsonData;
 };
 
