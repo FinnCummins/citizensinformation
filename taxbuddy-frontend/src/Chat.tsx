@@ -3,9 +3,8 @@ import MessageContext from './MessageContext'
 import './Chat.css';
 
 type Message = {
-  author: string,
-  text: string,
-  timeStamp: string
+  role: string,
+  content: string,
 };
 
 const Chat = () => {
@@ -15,10 +14,10 @@ const Chat = () => {
   const renderMessage = (message: Message, index: number) => (
     <div className="message" key={index.toString()}>
       <div className="messageHeader">
-        <p className="author">{message.author}</p>
-        <p className="timeStamp">{message.timeStamp}</p>
+        <p className="author">{message.role}</p>
+        {/* <p className="timeStamp">{message.timeStamp}</p> */}
       </div>
-      <p className="messageBody">{message.text}</p>
+      <p className="messageBody">{message.content}</p>
     </div>
   );
 

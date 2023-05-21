@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 const testMessages = [
-  { author: "yo", text: "hi there this is a message for the chat", timeStamp: '17.07'},
+  { role: "yo", content: "hi there this is a message for the chat"},
 ];
 
 const MessageContext = createContext(testMessages);

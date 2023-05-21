@@ -6,28 +6,29 @@ import { MessageProvider } from './MessageContext';
 import './App.css';
 
 type Message = {
-  author: string,
-  text: string,
-  timeStamp: string
+  role: string,
+  content: string,
 };
 
 const App = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const onMessageSubmit = (message: string) => {
+  const onMessageSubmit = async (message: string) => {
     const currentTime = new Date();
 
     console.log(messages);
     const newMessage = {
-      author: 'User',
-      text: message,
-      timeStamp: `${currentTime.getHours()}:${currentTime.getMinutes()}`
+      role: 'user',
+      content: message,
+      // timeStamp: `${currentTime.getHours()}:${currentTime.getMinutes()}`
     }
 
+    const { conversation, answer } = await getResponse(message);
+    
     const newReponse = {
-      author: 'Tax Buddy',
-      text: getResponse(message),
-      timeStamp: `${currentTime.getHours()}:${currentTime.getMinutes()}`
+      role: 'agent',
+      content: answer,
+      // timeStamp: `${currentTime.getHours()}:${currentTime.getMinutes()}`
     }
     setMessages([...messages, newMessage, newReponse]);
   }
