@@ -24,3 +24,7 @@
   .messageBody {
     margin: 0;
   }
+
+  .loading {
+    margin-left: 15px;
+  }

@@ -32,7 +32,7 @@ const Chat = (props: ChatProps) => {
           renderMessage(message, index)
         ))
       }
-      {isLoading ? <p>Thinking...</p> : null}
+      {isLoading ? <p className="loading">Thinking...</p> : null}
     </>
   );
 }
